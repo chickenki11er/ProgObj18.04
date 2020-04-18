@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace wsbLab2
+{
+    static class TemperatureConverter
+    {
+
+        public static double CelsiusToFahrenheit(double temperatureCelsius)
+        {
+
+            return (temperatureCelsius * 9 / 5) + 32;
+
+        }
+
+        public static double FahrenheitToCelsius(double temperatureFahrenheit)
+        {
+
+            return (temperatureFahrenheit - 32) * 5 / 9;
+        
+        }
+
+    }
+}
