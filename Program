@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace wsbLab2
+{
+    partial class Program
+    {
+        static void Main(string[] args)
+        {
+
+            //TimeSpan timeSpan = new TimeSpan(1,12,12,12);
+            //Console.WriteLine(timeSpan.Days);
+            //Console.WriteLine(timeSpan.TotalDays);
+            //Console.WriteLine(timeSpan.Seconds);
+            //Console.WriteLine(timeSpan.TotalSeconds);
+
+
+            //DateTime dateTime = new DateTime();
+            //DateTime dateTime1 = DateTime.Now;
+            //Console.WriteLine(dateTime1);
+            //Console.WriteLine(dateTime1.DayOfWeek);
+            //Console.WriteLine(dateTime1.DayOfYear);
+            //Console.WriteLine(dateTime1.IsDaylightSavingTime());
+            //Console.WriteLine((DateTime.Now-TimeSpan.FromDays(100)).IsDaylightSavingTime());
+
+            //Console.WriteLine(DateTimeOffset.Now);
+
+            //Console.WriteLine("i".ToUpper() == "I");
+
+            PointStruct pointStructA = new PointStruct(2,2); //value comp.
+            PointStruct pointStructB = new PointStruct(2, 2);
+            PointClass pointClassA = new PointClass(2, 2); //ref comp.
+            PointClass pointClassB = new PointClass(2, 2);
+            PointClass pointClassC = pointClassA;
+
+            Console.WriteLine(pointClassA.Equals(pointClassB)); //false - fałsz bo mimo, że te klasy mają te same argumenty, to nie są tym samym
+            Console.WriteLine(pointStructA.Equals( pointStructB)); //true
+            Console.WriteLine(pointClassA.Equals(pointClassC)); //true - prawda, bo przy tworzeniu zadeklarowaliśmy by klasaC była klasą A
+
+            PointChanger(pointStructA); //2 - wartość podana przy deklaracji obiektu
+            PointChanger(pointClassA); //100 - wartośc podana przy wywołaniu metody statycznej
+
+            Console.WriteLine(pointStructA.X);
+            Console.WriteLine(pointClassA.X);
+
+            //indexator
+            Sentence sentence = new Sentence();
+            Console.WriteLine(sentence[0]);
+            Console.WriteLine(sentence[1]);
+            Console.WriteLine(sentence[2]);
+            sentence[0] = "XYZ";
+            Console.WriteLine(sentence[0]);
+
+
+            Console.WriteLine(Employee.EmployeeCounter);
+            Employee employeeA = new Employee();
+            Console.WriteLine(Employee.EmployeeCounter);
+            Employee employeeB = new Employee();
+            Console.WriteLine(Employee.EmployeeCounter);
+            Employee.PrintCounter();
+
+
+            Console.WriteLine(TemperatureConverter.CelsiusToFahrenheit(-6.67));
+            Console.WriteLine(TemperatureConverter.FahrenheitToCelsius(20));
+
+
+
+            Console.ReadKey();
+        }
+
+
+        private static void PointChanger(PointStruct pointStruct)
+        {
+
+            pointStruct.X= 100;
+
+        }
+
+        private static void PointChanger(PointClass pointClass)
+        {
+
+            pointClass.X = 100;
+        }
+
+       
+    }
+}
